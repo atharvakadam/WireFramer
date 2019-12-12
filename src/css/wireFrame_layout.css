@@ -1,0 +1,119 @@
+html {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  /* font-family: 'Lexend Exa';   */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100%;
+}
+
+body {
+  position: absolute;
+  width: 80%;
+  left: 10%;
+  top: 5%;
+}
+
+div.banner {
+  padding: 20px;
+  margin-top: 60px;
+}
+
+form {
+  padding: 20px;
+  margin-top: 60px;
+}
+
+form button, form h5 {
+  margin: 20px 0;
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly]),
+input[type=email]:not(.browser-default):focus:not([readonly]),
+input[type=password]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]){
+  border-color: #ec407a;
+  box-shadow: none;
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly]) + label,
+textarea.materialize-textarea:focus:not([readonly]) + label,
+input[type=email]:not(.browser-default):focus:not([readonly]) + label,
+input[type=password]:not(.browser-default):focus:not([readonly]) + label{
+  color: #ec407a !important;
+}
+
+/* LIST SCREEN CLASSES */
+#list_item_card, #list_item_add_card, .list_item_header_card {
+  position: relative;
+  height: 50px;
+  display: grid;
+  grid-template-columns: 39% 23% 24%;
+  /* margin-top: 0px;
+  margin-bottom: 5px; */
+  border-radius: 5px;
+  cursor: pointer;
+  /* background-color: aqua; */
+}
+
+
+.list_item_task_header, .list_item_due_date_header, .list_item_status_header {
+  position: absolute;
+  
+  top: 5%;
+}
+
+.list_item_card_toolbar1 {
+  position: absolute;
+  left: 0%;
+  width: 100%;
+  top: 17%;
+  height: 80%;
+  display: grid;
+  grid-template-columns: 24% 50% 26%;
+}
+
+.list_item_card_toolbar2 {
+  position: absolute;
+  left: 78%;
+  width: 24%;
+  top: 10%;
+  height: 80%;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+}
+
+
+
+.list_item_task_header {
+  left: 10%;
+}
+.list_item_due_date_header {
+  left:37%;
+}
+.list_item_status_header {
+  left: 63%;
+}
+
+.column_border{
+  border: 2px solid black;
+  background-color: lightgrey;
+}
+
+.save_close_border{
+  border-bottom: 2px solid black;
+  background-color: lightgrey;
+}
+
+.canvas_border{
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  background-color: white;
+}
