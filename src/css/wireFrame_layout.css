@@ -104,12 +104,12 @@ input[type=password]:not(.browser-default):focus:not([readonly]) + label{
 
 .column_border{
   border: 2px solid black;
-  background-color: lightgrey;
+  background-color: #ececec;
 }
 
 .save_close_border{
   border-bottom: 2px solid black;
-  background-color: lightgrey;
+  background-color: #ececec;
 }
 
 .canvas_border{
