@@ -7,6 +7,7 @@ import { Rnd } from 'react-rnd';
 import TextInput from 'react-materialize'
 import TextArea from 'react-materialize'
 import Textfield from './Textfield';
+import Container from './Container';
 
 export class MiddleComponent extends Component {
     render() {
@@ -19,8 +20,9 @@ export class MiddleComponent extends Component {
             alignItems: "center",
             justifyContent: "center",
             border: "solid 1px black",
-            borderRadius:'5px'
-            // background: "#f0f0f0"
+            borderRadius:'5px',
+            zIndex:'-moz-initial',
+            background: "#f0f0f0"
           };
 
         const textarea = {
@@ -31,7 +33,7 @@ export class MiddleComponent extends Component {
         return (
             <div>
                 <div className="canvas_border" style={{height:'100%'}}>MY FUCKING CANVAS
-                    <Textfield></Textfield>
+                    <Container></Container>
                     <Textfield></Textfield>
                 </div>
                 

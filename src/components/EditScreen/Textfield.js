@@ -9,7 +9,9 @@ export class Textfield extends Component {
             alignItems: "center",
             justifyContent: "center",
             border: "solid 1px black",
-            borderRadius:'5px'
+            borderRadius:'5px',
+            height:'100%',
+            zIndex:'-moz-initial',
             // background: "#f0f0f0"
           };
 
