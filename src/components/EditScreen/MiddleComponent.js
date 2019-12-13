@@ -6,6 +6,7 @@ import { Resizable, ResizableBox } from 'react-resizable';
 import { Rnd } from 'react-rnd';
 import TextInput from 'react-materialize'
 import TextArea from 'react-materialize'
+import Textfield from './Textfield';
 
 export class MiddleComponent extends Component {
     render() {
@@ -30,9 +31,8 @@ export class MiddleComponent extends Component {
         return (
             <div>
                 <div className="canvas_border" style={{height:'100%'}}>MY FUCKING CANVAS
-                    <Rnd style={style} default={{x: 100,y: 100,width: 216,height: 38}}>
-                        <div><input placeholder="Input"></input></div>
-                    </Rnd>
+                    <Textfield></Textfield>
+                    <Textfield></Textfield>
                 </div>
                 
                 
@@ -42,6 +42,11 @@ export class MiddleComponent extends Component {
 }
 
 export default MiddleComponent
+
+// <Rnd style={style} default={{x: 100,y: 100,width: 216,height: 38}}>
+//                         <div><input placeholder="Input"></input></div>
+//                     </Rnd>
+
 
 // <Draggable axis="x"
 //                                 handle=".handle"
