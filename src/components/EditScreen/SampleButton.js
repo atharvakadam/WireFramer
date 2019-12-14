@@ -14,6 +14,7 @@ export class SampleButton extends Component {
             background: "#f0f0f0"
           };
 
+          //bounds property to include the constraints    
 
         return (
             <div>

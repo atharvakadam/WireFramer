@@ -11,6 +11,8 @@ export class Label extends Component {
             border: '0.15em solid',
             position: 'relative'}
 
+        //bounds property to include the constraints    
+
         return (
             <div>
                 <Rnd style={style} bounds=".canvas_border" default={{x: 100,y: 100,width: 200,height: 100}}>

@@ -17,7 +17,7 @@ export class Textfield extends Component {
             backgroundColor: "white", 
             color:'grey',
           };
-        // display: "flex",  <input className="active" type="text" defaultValue="Leol" placeholder="Input"></input>
+        
         return (
             <div>
                 <Rnd className="left" bounds=".canvas_border" style={style} default={{x: 100,y: 100,width: 216,height: 38}}>

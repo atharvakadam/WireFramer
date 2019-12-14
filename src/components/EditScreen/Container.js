@@ -13,6 +13,8 @@ export class Container extends Component {
             zIndex:'-moz-initial',
             background: "#f0f0f0"
           };
+        
+          //bounds property to include the constraints    
 
         return (
             <div>
