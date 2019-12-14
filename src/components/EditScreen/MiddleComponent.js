@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
-import DragResizeContainer from 'react-drag-resize';
-import Draggable, {DraggableCore} from 'react-draggable'; // Both at the same time
-import Button from 'react-materialize/lib/Button';
-import { Resizable, ResizableBox } from 'react-resizable';
 import { Rnd } from 'react-rnd';
-import TextInput from 'react-materialize'
-import TextArea from 'react-materialize'
 import Textfield from './Textfield';
 import Container from './Container';
+import Label from './Label';
+import SampleButton from './SampleButton';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 
 export class MiddleComponent extends Component {
     render() {
@@ -28,22 +27,48 @@ export class MiddleComponent extends Component {
         const textarea = {
             
         }  
-          
-          
+        
+        console.log(this.props.wireFrame)
+        var wireFrameItems = "";
+        if((this.props.wireFrame)){
+            wireFrameItems =  this.props.wireFrame.items
+        }
+        
+        
         return (
             <div>
                 <div className="canvas_border" style={{height:'100%'}}>MY FUCKING CANVAS
-                    <Container></Container>
-                    <Textfield></Textfield>
+                    {wireFrameItems && wireFrameItems.map(item => (
+                        item.type==="Container"?<Container></Container>:
+                        item.type==="Textfield"?<Textfield></Textfield>:
+                        item.type==="Label"?<Label></Label>:
+                        <SampleButton></SampleButton>
+                    ))}
+                    
                 </div>
                 
                 
             </div>
         )
+
+        
     }
 }
 
-export default MiddleComponent
+const mapStateToProps = (state) => {
+    return {
+        wireFrames: state.firestore.ordered.WireFrames,
+        auth: state.firebase.auth,
+    };
+};
+
+export default compose(connect(mapStateToProps))(MiddleComponent);
+
+// <Container></Container>
+//                     <Textfield></Textfield>
+//                     <Label></Label>
+//                     <SampleButton></SampleButton>
+
 
 // <Rnd style={style} default={{x: 100,y: 100,width: 216,height: 38}}>
 //                         <div><input placeholder="Input"></input></div>

@@ -5,20 +5,23 @@ export class Textfield extends Component {
     render() {
 
         const style = {
-            display: "flex",
+            paddingLeft:'10px',
+            verticalAlign:'center',
+            textAlign:'left',
             alignItems: "center",
             justifyContent: "center",
             border: "solid 1px black",
             borderRadius:'5px',
             height:'100%',
             zIndex:'-moz-initial',
-            // background: "#f0f0f0"
+            backgroundColor: "white", 
+            color:'grey',
           };
-
+        // display: "flex",  <input className="active" type="text" defaultValue="Leol" placeholder="Input"></input>
         return (
             <div>
-                <Rnd style={style} default={{x: 100,y: 100,width: 216,height: 38}}>
-                    <div><input placeholder="Input"></input></div>
+                <Rnd className="left" bounds=".canvas_border" style={style} default={{x: 100,y: 100,width: 216,height: 38}}>
+                   Input
                 </Rnd>
             </div>
         )

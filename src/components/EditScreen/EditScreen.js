@@ -17,8 +17,14 @@ import RightComponent from './RightComponent';
 // <img style={{width:'27%',height:'5%'}} src={labelimg}></img>
 
 export class EditScreen extends Component {
+
+    constructor(props){
+      super(props)
+      this.state = {containerState:'off'}
+    }
+
     render() {
-        
+        console.log(this.state.containerState)
         return (
             <div>
             <div className="input-field">
@@ -26,9 +32,9 @@ export class EditScreen extends Component {
                     <input style={{width:'88%',height:'30px'}} className="top left active" type="text" name="name" id="name" defaultValue={this.props.wireFrame?this.props.wireFrame.name:""}/>
             </div>
               <div className="list_item_card_toolbar1">
-              <LeftComponent></LeftComponent>
-              <MiddleComponent></MiddleComponent>
-              <RightComponent></RightComponent>
+              <LeftComponent containerState={this.state.containerState} ></LeftComponent>
+              <MiddleComponent wireFrame={this.props.wireFrame} containerState={this.state.containerState} ></MiddleComponent>
+              <RightComponent containerState={this.state.containerState} ></RightComponent>
               </div>
             </div>
         )
@@ -51,6 +57,7 @@ const mapStateToProps = (state, ownProps) => {
     return {
       wireFrame,
       auth: state.firebase.auth,
+      
     };
   };
 

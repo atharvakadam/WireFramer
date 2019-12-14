@@ -8,7 +8,14 @@ var zoomout = require('../../images/baseline_zoom_out_black_18dp.png');
 var zoomin = require('../../images/baseline_zoom_in_black_18dp.png');
 
 export class LeftComponent extends Component {
+    
+    changeContainerState = () => {
+        this.setState({containerState:'on'});
+    }
+
     render() {
+
+        console.log(this.props.containerState)
         return (
             <div>
                 <div className="column_border" style={{height:'100%'}}>
@@ -23,7 +30,7 @@ export class LeftComponent extends Component {
                     </span>
                     </div>
                     <br></br>
-                    <img style={{width:'60%',height:'15%'}} src={containerimg} alt="container"></img>
+                    <img style={{width:'60%',height:'15%'}} src={containerimg} alt="container" onDoubleClick={this.changeContainerState}></img>
                     <div style={{fontWeight:'bold'}} >Container</div>
                     <br></br>
                     <br></br>

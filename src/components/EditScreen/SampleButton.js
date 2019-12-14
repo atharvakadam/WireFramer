@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Rnd } from 'react-rnd';
 
-export class Container extends Component {
+export class SampleButton extends Component {
     render() {
 
         const style = {
@@ -14,14 +14,15 @@ export class Container extends Component {
             background: "#f0f0f0"
           };
 
+
         return (
             <div>
-                <Rnd bounds=".canvas_border" style={style} default={{x: 100,y: 100,width: 200,height: 100}}>
-                    <div style={{zIndex:'-moz-initial',backgroundColor:'yellow'}}></div>
+                <Rnd bounds=".canvas_border" style={style} default={{x: 100,y: 100,width: 160,height: 40}}>
+                    Submit
                 </Rnd>
             </div>
         )
     }
 }
 
-export default Container
+export default SampleButton
