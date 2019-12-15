@@ -14,7 +14,6 @@ export class Container extends Component {
             borderThickness:this.props.item.borderThickness,
             borderRadius:this.props.item.borderRadius,
             zIndex:'-moz-initial',
-            background: "#f0f0f0",
 
           };
         
