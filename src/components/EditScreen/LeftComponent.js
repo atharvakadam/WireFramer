@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import Button from 'react-materialize/lib/Button';
+import { Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 var containerimg = require('../../images/container.png');
 var labelimg = require('../../images/label.png');
 var buttonimg = require('../../images/button.png');
@@ -11,6 +13,10 @@ export class LeftComponent extends Component {
     
     changeContainerState = () => {
         this.setState({containerState:'on'});
+    }
+
+    goHome = () => {
+        // this.props.history.push('/')
     }
 
     render() {
@@ -26,7 +32,7 @@ export class LeftComponent extends Component {
                     <span style={{top:'10%',display:'grid',gridTemplateColumns:'30% 15% 33%'}} className="center">
                         <Button>Save</Button>
                         <span> </span>
-                        <Button>Close</Button>
+                        <button><Link to="/">Close</Link></button>
                     </span>
                     </div>
                     <br></br>

@@ -43,19 +43,20 @@ export class EditScreen extends Component {
         // return item
     }
 
+
     makeNewItem = (type) => {
         
         var NewItem = {
                     "key": this.props.wireFrame.items.length,
                     "type": type,
-                    "width": 100,
-                    "height": 200,
-                    "Xpos": 150,
-                    "Ypos": 150,
+                    "width": 200,
+                    "height": 100,
+                    "Xpos": 0,
+                    "Ypos": 0,
                     "Zpos": 0,
                     "text": "added"+type,
                     "fontSize": -1,
-                    "backgroundColor": type==='Container' || type==='Button'? "#d6d6d6":"#ffffff",
+                    "backgroundColor":type==='Button'? "#d6d6d6":type==='Label'?"##ffffff":"#ffffff",
                     "borderColor": type==='Label'?"#ffffff":"#111111",
                     "fontColor": "#111111",
                     "borderThickness": 3,
