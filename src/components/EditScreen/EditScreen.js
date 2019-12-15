@@ -20,11 +20,71 @@ export class EditScreen extends Component {
 
     constructor(props){
       super(props)
-      this.state = {containerState:'off'}
+      
+      // this.state = {wireFrame: this.props.wireFrame}
+      // if(!this.props.wireFrame){
+        this.state = {wireFrame:this.props.wireFrame,
+          currentItem:null}
+      // }
+      
+      
+    }
+
+    // state={
+    //   wireframe:this.props.wireFrame,
+    //       currentItem:null
+    // }
+    
+
+    setCurrentItem = (item) => {
+        console.log(item)
+        // e.preventDefault()
+        this.setState({currentItem:item});
+        // return item
+    }
+
+    makeNewItem = (type) => {
+        
+        var NewItem = {
+                    "key": this.props.wireFrame.items.length,
+                    "type": type,
+                    "width": 100,
+                    "height": 200,
+                    "Xpos": 150,
+                    "Ypos": 150,
+                    "Zpos": 0,
+                    "text": "added"+type,
+                    "fontSize": -1,
+                    "backgroundColor": type==='Container' || type==='Button'? "#d6d6d6":"#ffffff",
+                    "borderColor": type==='Label'?"#ffffff":"#111111",
+                    "fontColor": "#111111",
+                    "borderThickness": 3,
+                    "borderRadius": 3
+        }
+        console.log(type);
+        console.log(this.props.wireFrame)  
+        this.props.wireFrame.items.push(NewItem);
+        console.log(this.props.wireFrame) 
+        this.setState({wireFrame:this.props.wireFrame});
+
+
     }
 
     render() {
-        console.log(this.state.containerState)
+        // console.log(this.state.containerState)
+        const wireFrame = this.props.wireFrame
+        const auth = this.props.auth;
+        // console.log(this.state.wireFrame)
+        // console.log(wireFrame)
+        // console.log(this.props.wireFrame.it)
+
+        if(!auth.uid) {
+          return <Redirect to="/"></Redirect>
+        }
+        if(wireFrame === null){
+          return <Redirect to="/"></Redirect>
+        }
+
         return (
             <div>
             <div className="input-field">
@@ -32,9 +92,9 @@ export class EditScreen extends Component {
                     <input style={{width:'88%',height:'30px'}} className="top left active" type="text" name="name" id="name" defaultValue={this.props.wireFrame?this.props.wireFrame.name:""}/>
             </div>
               <div className="list_item_card_toolbar1">
-              <LeftComponent containerState={this.state.containerState} ></LeftComponent>
-              <MiddleComponent wireFrame={this.props.wireFrame} containerState={this.state.containerState} ></MiddleComponent>
-              <RightComponent containerState={this.state.containerState} ></RightComponent>
+              <LeftComponent makeNewItem={this.makeNewItem} containerState={this.state.containerState} ></LeftComponent>
+              <MiddleComponent setCurrentItem={this.setCurrentItem} wireFrame={this.state.wireFrame}></MiddleComponent>
+              <RightComponent currentItem={this.state.currentItem} setCurrentItem={this.setCurrentItem} ></RightComponent>
               </div>
             </div>
         )

@@ -10,18 +10,20 @@ export class Textfield extends Component {
             textAlign:'left',
             alignItems: "center",
             justifyContent: "center",
-            border: "solid 1px black",
-            borderRadius:'5px',
-            height:'100%',
+            border: "solid",
             zIndex:'-moz-initial',
-            backgroundColor: "white", 
+            borderColor:this.props.item.borderColor,
+            backgroundColor:this.props.item.backgroundColor,
+            borderThickness:this.props.item.borderThickness,
+            borderRadius:this.props.item.borderRadius,
+            fontSize:this.props.item.fontSize,
             color:'grey',
           };
         
         return (
-            <div>
-                <Rnd className="left" bounds=".canvas_border" style={style} default={{x: 100,y: 100,width: 216,height: 38}}>
-                   Input
+            <div onClick={() => this.props.setCurrentItem(this.props.item)} >
+                <Rnd className="left" bounds=".canvas_border" style={style} default={{x: this.props.item.Xpos,y: this.props.item.Ypos,width: this.props.item.width,height: this.props.item.height}}>
+                   {this.props.item.text.includes('added')?"Input":this.props.item.text}
                 </Rnd>
             </div>
         )

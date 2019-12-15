@@ -15,7 +15,7 @@ export class LeftComponent extends Component {
 
     render() {
 
-        console.log(this.props.containerState)
+        // console.log(this.props.containerState)
         return (
             <div>
                 <div className="column_border" style={{height:'100%'}}>
@@ -30,22 +30,22 @@ export class LeftComponent extends Component {
                     </span>
                     </div>
                     <br></br>
-                    <img style={{width:'60%',height:'15%'}} src={containerimg} alt="container" onDoubleClick={this.changeContainerState}></img>
+                    <img style={{width:'60%',height:'15%'}} src={containerimg} alt="container" onDoubleClick={() => this.props.makeNewItem('Container')}></img>
                     <div style={{fontWeight:'bold'}} >Container</div>
                     <br></br>
                     <br></br>
                     <br></br>
                     <div>Prompt for input:</div>
-                    <img style={{width:'24%',height:'4%'}} src={labelimg} alt="label"></img>
+                    <img style={{width:'24%',height:'4%'}} src={labelimg} alt="label" onDoubleClick={() => this.props.makeNewItem('Label')} ></img>
                     <br></br>
                     <br></br>
                     <br></br>
-                    <img style={{width:'60%',height:'6%'}} src={buttonimg} alt="button"></img>
+                    <img style={{width:'60%',height:'6%'}} src={buttonimg} alt="button" onDoubleClick={() => this.props.makeNewItem('Button')}></img>
                     <div style={{fontWeight:'bold'}} >Button</div>
                     <br></br>
                     <br></br>
                     <br></br>
-                    <img style={{width:'80%',height:'6%'}} src={textfieldimg} alt="textfield"></img>
+                    <img style={{width:'80%',height:'6%'}} src={textfieldimg} alt="textfield" onDoubleClick={() => this.props.makeNewItem('Textfield')}></img>
                     <div style={{fontWeight:'bold'}} >Textfield</div>
                 </div>
             </div>

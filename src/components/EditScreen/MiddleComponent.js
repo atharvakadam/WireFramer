@@ -7,6 +7,7 @@ import SampleButton from './SampleButton';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+import { Redirect } from 'react-router-dom'
 
 export class MiddleComponent extends Component {
     render() {
@@ -27,23 +28,39 @@ export class MiddleComponent extends Component {
         const textarea = {
             
         }  
+
         
         console.log(this.props.wireFrame)
-        var wireFrameItems = "";
-        if((this.props.wireFrame)){
-            wireFrameItems =  this.props.wireFrame.items
+        
+        // if((this.props.wireFrame===undefined)){
+        //     console.log("Idontknow")
+        // }
+        // else{
+            var wireFrameItems = this.props.wireFrame.items;
+        // }
+        
+        const selectNewItem = (item,setCurrentItem) => {
+            switch (item.type) {
+                case "Container":
+                    return <Container item={item} setCurrentItem={setCurrentItem} ></Container>;
+                case "Textfield":
+                    return <Textfield item={item} setCurrentItem={setCurrentItem}></Textfield>;
+                case "Label":
+                    return <Label item={item} setCurrentItem={setCurrentItem}></Label>;
+                default:
+                    return <SampleButton item={item} setCurrentItem={setCurrentItem}></SampleButton>;
+            }
+            
         }
+
         
-        
+
         return (
             <div>
-                <div className="canvas_border" style={{height:'100%'}}>MY FUCKING CANVAS
-                    {wireFrameItems && wireFrameItems.map(item => (
-                        item.type==="Container"?<Container></Container>:
-                        item.type==="Textfield"?<Textfield></Textfield>:
-                        item.type==="Label"?<Label></Label>:
-                        <SampleButton></SampleButton>
-                    ))}
+                <div className="canvas_border" style={{height:'100%'} }>MY FUCKING CANVAS
+                    {this.props.wireFrame.items && this.props.wireFrame.items.map(item => 
+                        selectNewItem(item,this.props.setCurrentItem)
+                    )}
                     
                 </div>
                 
@@ -55,14 +72,21 @@ export class MiddleComponent extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        wireFrames: state.firestore.ordered.WireFrames,
-        auth: state.firebase.auth,
-    };
-};
+// const mapStateToProps = (state) => {
+//     return {
+//         WireFrames: state.firestore.ordered.WireFrames,
+//         auth: state.firebase.auth,
+//     };
+// };
 
-export default compose(connect(mapStateToProps))(MiddleComponent);
+// export default compose(connect(mapStateToProps))(MiddleComponent);
+export default MiddleComponent;
+
+// item.type==="Container"?<Container item={item} setCurrentItem={this.props.setCurrentItem} ></Container>:
+//                         item.type==="Textfield"?<Textfield item={item} setCurrentItem={this.props.setCurrentItem}></Textfield>:
+//                         item.type==="Label"?<Label item={item} setCurrentItem={this.props.setCurrentItem}></Label>:
+//                         <SampleButton item={item} setCurrentItem={this.props.setCurrentItem}></SampleButton>
+
 
 // <Container></Container>
 //                     <Textfield></Textfield>

@@ -8,18 +8,21 @@ export class SampleButton extends Component {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            border: "solid 1px black",
-            borderRadius:'5px',
+            border: "solid",
             zIndex:'-moz-initial',
-            background: "#f0f0f0"
+            borderColor:this.props.item.borderColor,
+            backgroundColor:this.props.item.backgroundColor,
+            borderThickness:this.props.item.borderThickness,
+            borderRadius:this.props.item.borderRadius,
+            fontSize:this.props.item.fontSize,
           };
 
           //bounds property to include the constraints    
 
         return (
-            <div>
-                <Rnd bounds=".canvas_border" style={style} default={{x: 100,y: 100,width: 160,height: 40}}>
-                    Submit
+            <div onClick={() => this.props.setCurrentItem(this.props.item)}>
+                <Rnd bounds=".canvas_border" style={style} default={{x: this.props.item.Xpos,y: this.props.item.Ypos,width: this.props.item.width,height: this.props.item.height}}>
+                {this.props.item.text.includes('added')?"Submit":this.props.item.text}
                 </Rnd>
             </div>
         )
