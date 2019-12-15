@@ -10,6 +10,13 @@ export class Label extends Component {
         console.log('After ITEM', this.props.item)
         this.props.setCurrentItem({currentItem:this.props.item});
     }
+    saveDrag = (x,y) => {
+        console.log('BEfore ITEM', this.props.item)
+        this.props.item.Xpos = x
+        this.props.item.Ypos = y
+        console.log('After ITEM', this.props.item)
+        this.props.setCurrentItem({currentItem:this.props.item});
+    }
 
     render() {
 
@@ -33,7 +40,8 @@ export class Label extends Component {
                 onClick={() => this.props.setCurrentItem(this.props.item)} onBlur={() => console.log('NULL')}
                 onResizeStop={(e, direction, ref, delta, position) => {
                     this.saveResize(ref.style.width,ref.style.height)
-                  }}>
+                  }}
+                  onDragStop={(e, d) => { this.saveDrag(d.x,d.y) }}>
                 {this.props.item.text.includes('added')?"Prompt for Input:":this.props.item.text}
                 </Rnd>
             // </div>

@@ -12,6 +12,14 @@ export class Container extends Component {
         this.props.setCurrentItem({currentItem:this.props.item});
     }
 
+    saveDrag = (x,y) => {
+        console.log('BEfore ITEM', this.props.item)
+        this.props.item.Xpos = x
+        this.props.item.Ypos = y
+        console.log('After ITEM', this.props.item)
+        this.props.setCurrentItem({currentItem:this.props.item});
+    }
+
     render() {
 
         const style = {
@@ -35,7 +43,8 @@ export class Container extends Component {
             default={{x: this.props.item.Xpos,y: this.props.item.Ypos,width: this.props.item.width,height: this.props.item.height}}
             onResizeStop={(e, direction, ref, delta, position) => {
                 this.saveResize(ref.style.width,ref.style.height)
-              }}>
+              }}
+            onDragStop={(e, d) => { this.saveDrag(d.x,d.y) }}>
                     <div style={{zIndex:'-moz-initial',backgroundColor:'yellow'}}></div>
             </Rnd>
         )

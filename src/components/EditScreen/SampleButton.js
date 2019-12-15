@@ -10,6 +10,14 @@ export class SampleButton extends Component {
         console.log('After ITEM', this.props.item)
         this.props.setCurrentItem({currentItem:this.props.item});
     }
+    saveDrag = (x,y) => {
+        console.log('BEfore ITEM', this.props.item)
+        this.props.item.Xpos = x
+        this.props.item.Ypos = y
+        console.log('After ITEM', this.props.item)
+        this.props.setCurrentItem({currentItem:this.props.item});
+    }
+    
     render() {
 
         // added button style according to the item passed in, could be database or new Item
@@ -34,7 +42,8 @@ export class SampleButton extends Component {
                 onClick={() => this.props.setCurrentItem(this.props.item)}
                 onResizeStop={(e, direction, ref, delta, position) => {
                     this.saveResize(ref.style.width,ref.style.height)
-                  }}>
+                  }}
+                  onDragStop={(e, d) => { this.saveDrag(d.x,d.y) }}>
                 {this.props.item.text.includes('added')?"Submit":this.props.item.text}
                 </Rnd>
             // </div>
