@@ -63,17 +63,16 @@ export class MiddleComponent extends Component {
         }
 
         
-
+//style={{height:'100%'} }
+// <div></div>
+        console.log(this.props.wireFrame)
         return (
-            <div>
-                <div className="canvas_border" onClick={(e) => this.unSelectCurrentItem(e)} style={{height:'100%'} }>MY FUCKING CANVAS
+            <div className="canvas_border" >
+                <div style={{transform:"scale(" + (this.props.wireFrame.zoom) + ")"}} onClick={(e) => this.unSelectCurrentItem(e)}>MY FUCKING CANVAS
                     {this.props.wireFrame.items && this.props.wireFrame.items.map(item => 
                         selectNewItem(item,this.props.setCurrentItem)
                     )}
-                    
                 </div>
-                
-                
             </div>
         )
 

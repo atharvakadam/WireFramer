@@ -26,8 +26,8 @@ export class LeftComponent extends Component {
             <div>
                 <div className="column_border" style={{height:'100%'}}>
                     <div style={{height:'6%'}} className="save_close_border">
-                    <span className="left"><img src={zoomin} alt="zoomIn"></img></span>
-                    <span className="left"><img src={zoomout} alt="zoomOut"></img></span>
+                    <span className="left"><img onClick={() => this.props.zoomIn()} src={zoomin} alt="zoomIn"></img></span>
+                    <span className="left"><img onClick={() => this.props.zoomOut()} src={zoomout} alt="zoomOut"></img></span>
                     <span> </span>
                     <span style={{top:'10%',display:'grid',gridTemplateColumns:'30% 15% 33%'}} className="center">
                         <Button onClick={() => this.props.saveAndUpdateDatabase()}>Save</Button>

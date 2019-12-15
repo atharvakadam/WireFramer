@@ -40,7 +40,18 @@ export class EditScreen extends Component {
     }
 
     zoomIn = () => {
-      
+        this.props.wireFrame.zoom = this.props.wireFrame.zoom + 0.25
+        console.log('New zoom IN:',this.props.wireFrame.zoom )
+        this.setState({'wireFrame':this.props.wireFrame})
+        console.log(this.state.wireFrame)
+
+    }
+
+    zoomOut = () => {
+        this.props.wireFrame.zoom = this.props.wireFrame.zoom - 0.25
+        console.log('New zoom OUT:',this.props.wireFrame.zoom )
+        this.setState({'wireFrame':this.props.wireFrame})
+        console.log(this.state.wireFrame)
     }
 
     setCurrentItem = (item) => {
@@ -120,7 +131,7 @@ export class EditScreen extends Component {
                     <input onBlur={this.updateNameChange} ref="name" style={{width:'88%',height:'30px'}} className="top left active" type="text" name="name" id="name" defaultValue={this.props.wireFrame?this.props.wireFrame.name:""}/>
             </div>
               <div className="list_item_card_toolbar1">
-              <LeftComponent saveAndUpdateDatabase={this.saveAndUpdateDatabase} makeNewItem={this.makeNewItem} containerState={this.state.containerState} ></LeftComponent>
+              <LeftComponent zoomIn={this.zoomIn} zoomOut={this.zoomOut} saveAndUpdateDatabase={this.saveAndUpdateDatabase} makeNewItem={this.makeNewItem} containerState={this.state.containerState} ></LeftComponent>
               <MiddleComponent setCurrentItem={this.setCurrentItem} wireFrame={this.state.wireFrame} currentItem={this.state.currentItem} ></MiddleComponent>
               <RightComponent currentItem={this.state.currentItem} setCurrentItem={this.setCurrentItem} ></RightComponent>
               </div>
