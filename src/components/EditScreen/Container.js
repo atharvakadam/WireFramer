@@ -11,7 +11,7 @@ export class Container extends Component {
             border: "solid",
             borderColor:this.props.item.borderColor,
             backgroundColor:this.props.item.backgroundColor,
-            borderThickness:this.props.item.borderThickness,
+            borderWidth:this.props.item.borderThickness,
             borderRadius:this.props.item.borderRadius,
             zIndex:'-moz-initial',
 

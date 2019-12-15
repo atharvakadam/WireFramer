@@ -12,7 +12,7 @@ export class Label extends Component {
             border: '0.15em solid',
             borderColor:this.props.item.borderColor,
             backgroundColor:this.props.item.backgroundColor,
-            borderThickness:this.props.item.borderThickness,
+            borderWidth:this.props.item.borderThickness,
             borderRadius:this.props.item.borderRadius,
             fontSize:this.props.item.fontSize,
             position: 'relative'}

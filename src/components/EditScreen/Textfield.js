@@ -15,7 +15,7 @@ export class Textfield extends Component {
             zIndex:'-moz-initial',
             borderColor:this.props.item.borderColor,
             backgroundColor:this.props.item.backgroundColor,
-            borderThickness:this.props.item.borderThickness,
+            borderWidth:this.props.item.borderThickness,
             borderRadius:this.props.item.borderRadius,
             fontSize:this.props.item.fontSize,
             color:'grey',
