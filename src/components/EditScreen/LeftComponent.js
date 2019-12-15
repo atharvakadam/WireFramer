@@ -30,7 +30,7 @@ export class LeftComponent extends Component {
                     <span className="left"><img src={zoomout} alt="zoomOut"></img></span>
                     <span> </span>
                     <span style={{top:'10%',display:'grid',gridTemplateColumns:'30% 15% 33%'}} className="center">
-                        <Button>Save</Button>
+                        <Button onClick={() => this.props.saveAndUpdateDatabase()}>Save</Button>
                         <span> </span>
                         <button><Link to="/">Close</Link></button>
                     </span>

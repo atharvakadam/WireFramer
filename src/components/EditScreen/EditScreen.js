@@ -35,14 +35,36 @@ export class EditScreen extends Component {
     //       currentItem:null
     // }
     
+    updateNameChange = () => {
+        this.state.wireFrame.name = this.refs.name.value
+    }
+
 
     setCurrentItem = (item) => {
         console.log(item)
         // e.preventDefault()
+        // console.log(item.currentItem.key)
+        console.log(this.props.wireFrame)
+        console.log(this.state.wireFrame)
+        // this.props.wireFrame.items[item.key-1] = item
+        console.log("UPDATED WIREFRAME: ", this.state.wireFrame);
         this.setState({currentItem:item});
+        // this.setState({wireFrame:this.props.wireFrame});
+        
+        
         // return item
     }
 
+    saveAndUpdateDatabase = () => {
+      console.log(this.state)
+      this.props.firestore.collection('WireFrames').doc(this.state.wireFrame.id).update({
+        name:this.state.wireFrame.name,
+        owner:this.state.wireFrame.owner,
+        zoom:this.state.wireFrame.zoom,
+        timestamp:this.props.firestore.FieldValue.serverTimestamp(),
+        items:this.state.wireFrame.items,
+      })
+    }
 
     makeNewItem = (type) => {
         
@@ -90,10 +112,10 @@ export class EditScreen extends Component {
             <div>
             <div className="input-field">
                     <span className="left" style={{paddingRight:'30px',paddingLeft:'10px',paddingBottom:'10px',fontSize:'18px'}}>Name:     </span>
-                    <input style={{width:'88%',height:'30px'}} className="top left active" type="text" name="name" id="name" defaultValue={this.props.wireFrame?this.props.wireFrame.name:""}/>
+                    <input onBlur={this.updateNameChange} ref="name" style={{width:'88%',height:'30px'}} className="top left active" type="text" name="name" id="name" defaultValue={this.props.wireFrame?this.props.wireFrame.name:""}/>
             </div>
               <div className="list_item_card_toolbar1">
-              <LeftComponent makeNewItem={this.makeNewItem} containerState={this.state.containerState} ></LeftComponent>
+              <LeftComponent saveAndUpdateDatabase={this.saveAndUpdateDatabase} makeNewItem={this.makeNewItem} containerState={this.state.containerState} ></LeftComponent>
               <MiddleComponent setCurrentItem={this.setCurrentItem} wireFrame={this.state.wireFrame}></MiddleComponent>
               <RightComponent currentItem={this.state.currentItem} setCurrentItem={this.setCurrentItem} ></RightComponent>
               </div>
