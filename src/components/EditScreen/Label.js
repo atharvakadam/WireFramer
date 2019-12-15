@@ -6,6 +6,7 @@ export class Label extends Component {
 
     render() {
 
+        // added style according to the item passed in, could be database or new Item
         const style = {
             padding: '1em',
             border: '0.15em solid',
