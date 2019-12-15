@@ -4,6 +4,7 @@ import { Rnd } from 'react-rnd';
 export class SampleButton extends Component {
     render() {
 
+        // added textfield style according to the item passed in, could be database or new Item
         const style = {
             display: "flex",
             alignItems: "center",
