@@ -17,7 +17,23 @@ class HomeScreen extends Component {
                         items:[],
                         timestamp:this.props.firestore.FieldValue.serverTimestamp()}  
 
-        console.log(this.props.firestore.collection('WireFrames').add(newObject));
+        // console.log(this.props.firestore.collection('WireFrames').add(newObject)).then(function(docRef){
+        //     console.log("Document written with ID: " + docRef.id)
+        // });
+        this.props.firestore.collection('WireFrames').add(newObject).then(this.redirectToWireframe)
+
+
+        // var redirectURL = "/wireFrame/" + redirectId
+        // console.log(redirectURL)
+        // console.log(redirectId)
+        // this.props.history.push('/wireFrame/'+redirectId);
+    }
+
+    redirectToWireframe = (docRef) => {
+        console.log("docref: ", docRef)
+        console.log("docref id: ", docRef.id)
+        return <Redirect to={"/wireFrame/", docRef.id} />
+        // this.props.history.push("/wireFrame/",docRef.id);
     }
 
     updateTimeStamp = (id) =>{
