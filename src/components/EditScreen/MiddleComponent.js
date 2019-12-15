@@ -10,6 +10,15 @@ import { compose } from 'redux';
 import { Redirect } from 'react-router-dom'
 
 export class MiddleComponent extends Component {
+
+
+    unSelectCurrentItem = (e) => {
+        // e.stopPropagation();
+        e.stopPropagation();
+        console.log("UNSELECT ITEM")
+        // this.props.item = null;
+    }
+
     render() {
         const layout = [{ key: 'test', x: 0, y: 0, width: 200, height: 100, zIndex: 1 }]
         const canResizable = (isResize) => {
@@ -42,13 +51,13 @@ export class MiddleComponent extends Component {
         const selectNewItem = (item,setCurrentItem) => {
             switch (item.type) {
                 case "Container":
-                    return <Container item={item} setCurrentItem={setCurrentItem} ></Container>;
+                    return <Container currentItem={this.props.currentItem} item={item} setCurrentItem={setCurrentItem} ></Container>;
                 case "Textfield":
-                    return <Textfield item={item} setCurrentItem={setCurrentItem}></Textfield>;
+                    return <Textfield currentItem={this.props.currentItem} item={item} setCurrentItem={setCurrentItem}></Textfield>;
                 case "Label":
-                    return <Label item={item} setCurrentItem={setCurrentItem}></Label>;
+                    return <Label currentItem={this.props.currentItem} item={item} setCurrentItem={setCurrentItem}></Label>;
                 default:
-                    return <SampleButton item={item} setCurrentItem={setCurrentItem}></SampleButton>;
+                    return <SampleButton currentItem={this.props.currentItem} item={item} setCurrentItem={setCurrentItem}></SampleButton>;
             }
             
         }
@@ -57,7 +66,7 @@ export class MiddleComponent extends Component {
 
         return (
             <div>
-                <div className="canvas_border" style={{height:'100%'} }>MY FUCKING CANVAS
+                <div className="canvas_border" onClick={(e) => this.unSelectCurrentItem(e)} style={{height:'100%'} }>MY FUCKING CANVAS
                     {this.props.wireFrame.items && this.props.wireFrame.items.map(item => 
                         selectNewItem(item,this.props.setCurrentItem)
                     )}

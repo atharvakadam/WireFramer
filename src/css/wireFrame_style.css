@@ -183,3 +183,32 @@ div.banner {
   border-color: #111111;
   border-radius: 10px;
 }
+
+.currentItem{
+  display: block;
+  width: 8px;
+  height: 8px;
+  background: white;
+  border: 1px solid grey;
+  position: absolute;
+}
+
+.currentItem.left {
+  left: -5px;
+}
+
+.currentItem.middle {
+  left: 50%;
+}
+
+.currentItem.bottom {
+  bottom: -5px;
+}
+
+.currentItem.right {
+  right: -5px;
+}
+
+.currentItem.top {
+  top: -5px;
+}

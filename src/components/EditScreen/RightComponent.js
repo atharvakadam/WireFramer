@@ -42,6 +42,12 @@ export class RightComponent extends Component {
         this.props.setCurrentItem(item)
     }
 
+    updateFontColorChange = (item) => {
+        console.log('BACKGROUNDCOLOR CHANGE ALERT')
+        item.fontColor = this.refs.fontColor.value
+        this.props.setCurrentItem(item)
+    }
+
     render() {
 
         console.log('Current Item:', this.props.currentItem)
@@ -58,6 +64,12 @@ export class RightComponent extends Component {
                         <div className="input-field">
                             <span className="left" style={{paddingRight:'50px',paddingLeft:'30px',fontSize:'15px',fontWeight:'bold'}}>Font Size:     </span>
                             <input ref="fontSize" style={{width:'35%',height:'20px'}} className="top left active" type="number" name="name" id="name" value={this.props.currentItem?(this.props.currentItem.fontSize):0} onChange={() => this.updateFontSizeChange(this.props.currentItem)}/>
+                        </div>
+                        <br></br>
+                        <br></br>
+                        <div className="input-field">
+                            <span className="left" style={{paddingRight:'80px',paddingLeft:'30px',fontSize:'15px',fontWeight:'bold'}}>Font Color:     </span>
+                            <input ref="fontColor" className="top left active" type="color" name="name" id="name" value={this.props.currentItem?(this.props.currentItem.fontColor):0} onChange={() => this.updateFontColorChange(this.props.currentItem)}/>
                         </div>
                         <br></br>
                         <br></br>

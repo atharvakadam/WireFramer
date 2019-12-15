@@ -8,6 +8,8 @@ class WireFrameCard extends React.Component {
         console.log(1)
     }
 
+    // e) => this.props.deleteWireFrame(e,wireFrame)
+    // <span style={{paddingLeft:'30px'}}></span><span onClick={console.log('123DELETE')} ><img src={deleteImg}></img></span>
     render() {
         const { wireFrame } = this.props;
         console.log("WireFrameCard, wireFrame.id: " + wireFrame.id);
@@ -15,8 +17,7 @@ class WireFrameCard extends React.Component {
             <div>
             <div className="card z-depth-0 todo-list-link">
                 <div className="card-content grey-text text-darken-3">
-                    <span style={{fontSize:'20px'}} className="card-title">{wireFrame.name}<img style={{paddingLeft:'50px'}} onClick={(e) => this.deleteStuff} src={deleteImg}></img></span>
-                    
+                    <h6>{wireFrame.name}<button onClick={(e) => this.props.deleteWireFrame(e,wireFrame)}>X</button></h6>
                 </div>
                 <span></span>
             </div>

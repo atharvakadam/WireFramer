@@ -17,7 +17,24 @@ export class SampleButton extends Component {
         console.log('After ITEM', this.props.item)
         this.props.setCurrentItem({currentItem:this.props.item});
     }
-    
+
+    updateCssOnSelect(){
+        if (this.props.currentItem === this.props.item){
+          return (
+            <div>
+                <div className="currentItem left top"></div>
+                <div className="currentItem left bottom"></div>
+                <div className="currentItem right top"></div>
+                <div className="currentItem right bottom"></div>
+            </div>
+          )
+          
+        }
+        else{
+          return "";
+        }
+      }
+
     render() {
 
         // added button style according to the item passed in, could be database or new Item
@@ -32,6 +49,7 @@ export class SampleButton extends Component {
             borderWidth:this.props.item.borderThickness,
             borderRadius:this.props.item.borderRadius,
             fontSize:this.props.item.fontSize,
+            color:this.props.item.fontColor,
           };
 
           //bounds property to include the constraints    
@@ -45,6 +63,7 @@ export class SampleButton extends Component {
                   }}
                   onDragStop={(e, d) => { this.saveDrag(d.x,d.y) }}>
                 {this.props.item.text.includes('added')?"Submit":this.props.item.text}
+                {this.updateCssOnSelect()}
                 </Rnd>
             // </div>
         )

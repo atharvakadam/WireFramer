@@ -26,7 +26,7 @@ class WireFrameLinks extends React.Component {
             <div className="todo-lists section">
                 {wireFrames && wireFrames.map(wireFrame => (
                     <Link onClick={() => this.props.updateTimeStamp(wireFrame.id)} to={'/wireFrame/' + wireFrame.id} key={wireFrame.id}>
-                        <WireFrameCard wireFrame={wireFrame} />
+                        <WireFrameCard deleteWireFrame={this.props.deleteWireFrame} wireFrame={wireFrame} />
                     </Link>
                 ))}
             </div>

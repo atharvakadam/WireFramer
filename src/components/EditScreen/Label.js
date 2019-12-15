@@ -17,6 +17,22 @@ export class Label extends Component {
         console.log('After ITEM', this.props.item)
         this.props.setCurrentItem({currentItem:this.props.item});
     }
+    updateCssOnSelect(){
+        if (this.props.currentItem === this.props.item){
+          return (
+            <div>
+                <div className="currentItem left top"></div>
+                <div className="currentItem left bottom"></div>
+                <div className="currentItem right top"></div>
+                <div className="currentItem right bottom"></div>
+            </div>
+          )
+          
+        }
+        else{
+          return "";
+        }
+      }
 
     render() {
 
@@ -30,10 +46,11 @@ export class Label extends Component {
             borderWidth:this.props.item.borderThickness,
             borderRadius:this.props.item.borderRadius,
             fontSize:this.props.item.fontSize,
+            color:this.props.item.fontColor,
             position: 'relative'}
 
         //bounds property to include the constraints    
-
+        //() => this.props.setCurrentItem(this.props.item)
         return (
             // <div >
                 <Rnd style={style} bounds=".canvas_border" default={{x: this.props.item.Xpos,y: this.props.item.Ypos,width: this.props.item.width,height: this.props.item.height}} 
@@ -43,6 +60,7 @@ export class Label extends Component {
                   }}
                   onDragStop={(e, d) => { this.saveDrag(d.x,d.y) }}>
                 {this.props.item.text.includes('added')?"Prompt for Input:":this.props.item.text}
+                {this.updateCssOnSelect()}
                 </Rnd>
             // </div>
         )

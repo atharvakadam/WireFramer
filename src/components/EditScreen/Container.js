@@ -20,6 +20,23 @@ export class Container extends Component {
         this.props.setCurrentItem({currentItem:this.props.item});
     }
 
+    updateCssOnSelect(){
+        if (this.props.currentItem === this.props.item){
+          return (
+            <div>
+                <div className="currentItem left top"></div>
+                <div className="currentItem left bottom"></div>
+                <div className="currentItem right top"></div>
+                <div className="currentItem right bottom"></div>
+            </div>
+          )
+          
+        }
+        else{
+          return "";
+        }
+      }
+
     render() {
 
         const style = {
@@ -31,6 +48,7 @@ export class Container extends Component {
             backgroundColor:this.props.item.backgroundColor,
             borderWidth:this.props.item.borderThickness,
             borderRadius:this.props.item.borderRadius,
+            color:this.props.item.fontColor,
             zIndex:'-moz-initial',
 
           };
@@ -46,6 +64,7 @@ export class Container extends Component {
               }}
             onDragStop={(e, d) => { this.saveDrag(d.x,d.y) }}>
                     <div style={{zIndex:'-moz-initial',backgroundColor:'yellow'}}></div>
+                {this.updateCssOnSelect()}    
             </Rnd>
         )
     }

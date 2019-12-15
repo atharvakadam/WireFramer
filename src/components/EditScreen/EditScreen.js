@@ -39,8 +39,12 @@ export class EditScreen extends Component {
         this.state.wireFrame.name = this.refs.name.value
     }
 
+    zoomIn = () => {
+      
+    }
 
     setCurrentItem = (item) => {
+        // this.updateCssOnSelect(item);
         console.log(item)
         // e.preventDefault()
         // console.log(item.currentItem.key)
@@ -54,6 +58,7 @@ export class EditScreen extends Component {
         
         // return item
     }
+
 
     saveAndUpdateDatabase = () => {
       console.log(this.state)
@@ -116,7 +121,7 @@ export class EditScreen extends Component {
             </div>
               <div className="list_item_card_toolbar1">
               <LeftComponent saveAndUpdateDatabase={this.saveAndUpdateDatabase} makeNewItem={this.makeNewItem} containerState={this.state.containerState} ></LeftComponent>
-              <MiddleComponent setCurrentItem={this.setCurrentItem} wireFrame={this.state.wireFrame}></MiddleComponent>
+              <MiddleComponent setCurrentItem={this.setCurrentItem} wireFrame={this.state.wireFrame} currentItem={this.state.currentItem} ></MiddleComponent>
               <RightComponent currentItem={this.state.currentItem} setCurrentItem={this.setCurrentItem} ></RightComponent>
               </div>
             </div>

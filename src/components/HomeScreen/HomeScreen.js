@@ -20,7 +20,7 @@ class HomeScreen extends Component {
         // console.log(this.props.firestore.collection('WireFrames').add(newObject)).then(function(docRef){
         //     console.log("Document written with ID: " + docRef.id)
         // });
-        this.props.firestore.collection('WireFrames').add(newObject).then(this.redirectToWireframe)
+        this.props.firestore.collection('WireFrames').add(newObject).then(ref => {this.props.history.push('/wireFrame/' + ref.id);})
 
 
         // var redirectURL = "/wireFrame/" + redirectId
@@ -40,6 +40,15 @@ class HomeScreen extends Component {
         this.props.firestore.collection('WireFrames').doc(id).update({timestamp:this.props.firestore.FieldValue.serverTimestamp()})
     }
 
+    deleteWireFrame = (e,wireFrame) =>{
+        // e.stopPropagation();
+        console.log('deleteWireFrame')
+        this.props.firestore.collection('WireFrames').doc(wireFrame.id).delete().then(function() {
+            console.log("Document successfully deleted!");
+        })
+        e.stopPropagation();
+
+    }
 
     render() {
         if (!this.props.auth.uid) {
@@ -52,7 +61,7 @@ class HomeScreen extends Component {
             <div className="dashboard container">
                 <div className="row">
                     <div className="col s12 m4">
-                        <WireFrameLinks updateTimeStamp={this.updateTimeStamp} />
+                        <WireFrameLinks deleteWireFrame={this.deleteWireFrame} updateTimeStamp={this.updateTimeStamp} />
                     </div>
 
                     <div className="col s8">
