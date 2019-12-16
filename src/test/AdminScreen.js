@@ -31,6 +31,8 @@ export class AdminScreen extends Component {
                     owner: wireFrameJson.owner,
                     zoom: wireFrameJson.zoom,
                     items: wireFrameJson.items,
+                    height:wireFrameJson.height,
+                    width:wireFrameJson.width,
                     timestamp: firestore.FieldValue.serverTimestamp()
                 }).then(() => {
                     // console.log('timestamp:' + fireStore.FieldValue.serverTimestamp())
@@ -42,7 +44,7 @@ export class AdminScreen extends Component {
     }
 
     render() {
-
+        
         return (
             <div>
                 <button onClick={this.handleClear}>Clear Database</button>
@@ -60,7 +62,7 @@ const mapStateToProps = function (state) {
     };
 }
 
-export default connect(mapStateToProps)(AdminScreen);;
+export default connect(mapStateToProps)(AdminScreen);
 
 // compose(connect(mapStateToProps),firebaseConnect([{collection:'users'}])(AdminScreen));
 //connect(mapStateToProps)(AdminScreen);

@@ -5,6 +5,8 @@
                 "name": "Atharva's WireFrame",
                 "owner": "nG1CYTp2Z9Yq0wRUMD1GCpgpnA12",
                 "zoom": 1,
+                "height":"700",
+                "width":"750",
                 "items": [{
                     "key": 0,
                     "type": "Container",
@@ -76,6 +78,8 @@
             "name": "Atharva's WireFrame2",
             "owner": "nG1CYTp2Z9Yq0wRUMD1GCpgpnA12",
             "zoom" : 1,
+            "height":"750",
+            "width":"750",
             "items":[
                 {
                     "key": 0,
@@ -149,6 +153,8 @@
             "name": "Adam's WireFrame",
             "owner": "S8WUOXUMCwcwv4b8N7pyVttDzTF2",
             "zoom": 1,
+            "height":"800",
+            "width":"750",
             "items":[
                 {
                     "key": 0,
@@ -221,6 +227,8 @@
             "name": "Adam's Wireframe2",
             "owner": "S8WUOXUMCwcwv4b8N7pyVttDzTF2",
             "zoom" : 1,
+            "height":"730",
+            "width":"750",
             "items":[
                 {
                     "key": 0,

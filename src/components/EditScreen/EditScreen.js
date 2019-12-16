@@ -204,7 +204,7 @@ export class EditScreen extends Component {
         )
     }
 }
-
+// style={{height:this.state.wireFrame.height.toString()+"px",width:this.state.wireFrame.height.toString()+"px"}}
 const mapStateToProps = (state, ownProps) => {
     const { id } = ownProps.match.params;
     // const { wireFrames } = state.firestore.data
