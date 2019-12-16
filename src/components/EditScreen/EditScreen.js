@@ -78,26 +78,27 @@ export class EditScreen extends Component {
 
     deleteItem = (event) => {
       
-          var itemToRemoveKey = this.state.currentItem.key
-          console.log("itemtoremovekey", itemToRemoveKey);
-          console.log(this.props.wireFrame)
-          this.props.wireFrame.items.splice(itemToRemoveKey,1);
-          for(let i=0;i<this.props.wireFrame.items.length;i++){
-            this.props.wireFrame.items[i].key = i
-          }
+      if(this.state.currentItem){
+        var itemToRemoveKey = this.state.currentItem.key
+        console.log("itemtoremovekey", itemToRemoveKey);
+        console.log(this.props.wireFrame)
+        this.props.wireFrame.items.splice(itemToRemoveKey,1);
+        for(let i=0;i<this.props.wireFrame.items.length;i++){
+          this.props.wireFrame.items[i].key = i
+        }
 
-          console.log(this.props.wireFrame.items)
-          this.setState({wireFrame:this.props.wireFrame})
-          // this.setState({currentItem:null})
-          // var newItems = this.state.wireFrame.items
-          // if()
+        console.log(this.props.wireFrame.items)
+        this.setState({wireFrame:this.props.wireFrame})
+        this.setState({currentItem:null})
+        // var newItems = this.state.wireFrame.items
+        // if()
+        
+
+        // for(let i=0;i<newItems.length;i++){
+        
+        // }
+      }
           
-
-          // for(let i=0;i<newItems.length;i++){
-          
-          // }
-
-
       event.preventDefault();
     }
     

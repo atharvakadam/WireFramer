@@ -41,8 +41,8 @@ export class LeftComponent extends Component {
                     <br></br>
                     <br></br>
                     <br></br>
-                    <div>Prompt for input:</div>
-                    <img style={{width:'24%',height:'4%'}} src={labelimg} alt="label" onDoubleClick={() => this.props.makeNewItem('Label')} ></img>
+                    <img style={{width:'60%',height:'4%'}} src={labelimg} alt="label" onDoubleClick={() => this.props.makeNewItem('Label')} ></img>
+                    <div style={{fontWeight:'bold'}}>Label</div>
                     <br></br>
                     <br></br>
                     <br></br>
