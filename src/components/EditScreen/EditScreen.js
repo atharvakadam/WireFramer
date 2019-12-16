@@ -157,7 +157,7 @@ export class EditScreen extends Component {
                     "Ypos": 0,
                     "Zpos": 0,
                     "text": "added"+type,
-                    "fontSize": -1,
+                    "fontSize": type==='Container'?-1:13,
                     "backgroundColor":type==='Button'? "#d6d6d6":type==='Label'?"##ffffff":"#ffffff",
                     "borderColor": type==='Label'?"#ffffff":"#111111",
                     "fontColor": "#111111",
@@ -169,6 +169,7 @@ export class EditScreen extends Component {
         this.props.wireFrame.items.push(NewItem);
         console.log(this.props.wireFrame) 
         this.setState({wireFrame:this.props.wireFrame});
+        this.setState({currentItem:NewItem});
 
 
     }

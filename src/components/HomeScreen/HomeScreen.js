@@ -46,6 +46,7 @@ class HomeScreen extends Component {
         this.props.firestore.collection('WireFrames').doc(wireFrame.id).delete().then(function() {
             console.log("Document successfully deleted!");
         })
+        e.preventDefault();
         e.stopPropagation();
 
     }

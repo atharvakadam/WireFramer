@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom'
+import { compose } from 'redux';
 import wireFrameJson from './TestWireFrameData.json'
 import { getFirestore } from 'redux-firestore';
 import { firestore } from 'firebase';
+import { firebaseConnect } from 'react-redux-firebase';
  
 
 export class AdminScreen extends Component {
@@ -39,6 +42,7 @@ export class AdminScreen extends Component {
     }
 
     render() {
+
         return (
             <div>
                 <button onClick={this.handleClear}>Clear Database</button>
@@ -50,9 +54,13 @@ export class AdminScreen extends Component {
 const mapStateToProps = function (state) {
     return {
         auth: state.firebase.auth,
-        firebase: state.firebase
+        firebase: state.firebase,
+        // admin: state.firebase.profile.admin
+        // users: state.firestore.data.users
     };
 }
 
-export default connect(mapStateToProps)(AdminScreen);
+export default connect(mapStateToProps)(AdminScreen);;
 
+// compose(connect(mapStateToProps),firebaseConnect([{collection:'users'}])(AdminScreen));
+//connect(mapStateToProps)(AdminScreen);
