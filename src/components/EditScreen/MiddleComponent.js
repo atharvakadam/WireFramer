@@ -13,11 +13,42 @@ export class MiddleComponent extends Component {
 
 
     unSelectCurrentItem = (e) => {
-        // e.stopPropagation();
-        e.stopPropagation();
+        
         console.log("UNSELECT ITEM")
-        // this.props.item = null;
+
+        // this.props.setCurrentItem(null);
+        // e.stopPropagation();
+        // e.preventDefault();
+        // this.props.item = null;s
+        
     }
+
+    activateCtrlD = () => {
+        document.addEventListener('keypress', (event) => {
+            this.props.ctrlD(event);
+        });
+      }
+  
+    activateBackspace = () => {
+        document.addEventListener('keydown', (event) => {
+            console.log(event.keyCode)
+            if(parseInt(event.keyCode)==8){
+                // console.log('FUCKSHITFUCK')
+                this.props.deleteItem(event);
+            }
+        });
+      }  
+
+    componentDidMount() {
+        this.activateCtrlD();
+        this.activateBackspace();
+    }
+  
+    componentWillUnmount() {
+          document.removeEventListener('keydown',(event) => {this.props.activateBackspace(event)})
+          document.removeEventListener('keydown',(event) => {this.props.ctrlD(event)})
+
+    }  
 
     render() {
         const layout = [{ key: 'test', x: 0, y: 0, width: 200, height: 100, zIndex: 1 }]
@@ -65,10 +96,11 @@ export class MiddleComponent extends Component {
         
 //style={{height:'100%'} }
 // <div></div>
+//
         console.log(this.props.wireFrame)
         return (
-            <div className="canvas_border" >
-                <div style={{transform:"scale(" + (this.props.wireFrame.zoom) + ")"}} onClick={(e) => this.unSelectCurrentItem(e)}>MY FUCKING CANVAS
+            <div className="canvas_border" onClick={(e) => this.unSelectCurrentItem(e)}>
+                <div style={{transform:"scale(" + (this.props.wireFrame.zoom) + ")"}} >
                     {this.props.wireFrame.items && this.props.wireFrame.items.map(item => 
                         selectNewItem(item,this.props.setCurrentItem)
                     )}

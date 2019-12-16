@@ -39,6 +39,68 @@ export class EditScreen extends Component {
         this.state.wireFrame.name = this.refs.name.value
     }
 
+    
+
+    ctrlD = (event) => {
+      if (event.ctrlKey===true  && event.key ==="d") {
+          //   window.alert('Undo!');
+          console.log(this.state.currentItem)
+        if(this.state.currentItem){
+          var newItem = {
+            "key": this.props.wireFrame.items.length,
+            "type": this.state.currentItem.type,
+            "width": this.state.currentItem.width,
+            "height": this.state.currentItem.height,
+            "Xpos": this.state.currentItem.Xpos + 100,
+            "Ypos": this.state.currentItem.Ypos + 100,
+            "Zpos": this.state.currentItem.Zpos,
+            "text": this.state.currentItem.text,
+            "fontSize": this.state.currentItem.fontSize,
+            "backgroundColor":this.state.currentItem.backgroundColor,
+            "borderColor": this.state.currentItem.borderColor,
+            "fontColor": this.state.currentItem.fontColor,
+            "borderThickness": this.state.currentItem.borderThickness,
+            "borderRadius": this.state.currentItem.borderRadius
+          }
+            // var newItem = this.state.currentItem
+            // newItem.key = this.props.wireFrame.items.length
+            this.props.wireFrame.items.push(newItem);
+            console.log(this.props.wireFrame) 
+            this.setState({wireFrame:this.props.wireFrame});
+            this.setState({currentItem:newItem})
+            console.log(this.state.wireFrame)
+        }
+        
+        event.preventDefault();
+              
+      }
+    }
+
+    deleteItem = (event) => {
+      
+          var itemToRemoveKey = this.state.currentItem.key
+          console.log("itemtoremovekey", itemToRemoveKey);
+          console.log(this.props.wireFrame)
+          this.props.wireFrame.items.splice(itemToRemoveKey,1);
+          for(let i=0;i<this.props.wireFrame.items.length;i++){
+            this.props.wireFrame.items[i].key = i
+          }
+
+          console.log(this.props.wireFrame.items)
+          this.setState({wireFrame:this.props.wireFrame})
+          // this.setState({currentItem:null})
+          // var newItems = this.state.wireFrame.items
+          // if()
+          
+
+          // for(let i=0;i<newItems.length;i++){
+          
+          // }
+
+
+      event.preventDefault();
+    }
+    
     zoomIn = () => {
         this.props.wireFrame.zoom = this.props.wireFrame.zoom + 0.25
         console.log('New zoom IN:',this.props.wireFrame.zoom )
@@ -56,6 +118,7 @@ export class EditScreen extends Component {
 
     setCurrentItem = (item) => {
         // this.updateCssOnSelect(item);
+        // e.stopPropagation();
         console.log(item)
         // e.preventDefault()
         // console.log(item.currentItem.key)
@@ -132,7 +195,7 @@ export class EditScreen extends Component {
             </div>
               <div className="list_item_card_toolbar1">
               <LeftComponent zoomIn={this.zoomIn} zoomOut={this.zoomOut} saveAndUpdateDatabase={this.saveAndUpdateDatabase} makeNewItem={this.makeNewItem} containerState={this.state.containerState} ></LeftComponent>
-              <MiddleComponent setCurrentItem={this.setCurrentItem} wireFrame={this.state.wireFrame} currentItem={this.state.currentItem} ></MiddleComponent>
+              <MiddleComponent deleteItem={this.deleteItem} ctrlD={this.ctrlD} setCurrentItem={this.setCurrentItem} wireFrame={this.state.wireFrame} currentItem={this.state.currentItem} ></MiddleComponent>
               <RightComponent currentItem={this.state.currentItem} setCurrentItem={this.setCurrentItem} ></RightComponent>
               </div>
             </div>
